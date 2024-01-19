@@ -1,17 +1,4 @@
 # -----------------
-# Autoloads
-# -----------------
-
-# Use colors
-autoload -U colors && colors
-# System completion init
-autoload -Uz compinit && compinit
-# bashcompinit
-autoload -U bashcompinit && bashcompinit
-# Enabling Portage completions and Gentoo prompt for zsh
-autoload promptinit && promptinit
-
-# -----------------
 # Zsh configuration
 # -----------------
 
@@ -38,40 +25,6 @@ bindkey -v
 # Remove path separator from WORDCHARS.
 WORDCHARS=${WORDCHARS//[\/]}
 
-# -----------------
-# Zim configuration
-# -----------------
-
-# Use degit instead of git as the default tool to install and update modules.
-#zstyle ':zim:zmodule' use 'degit'
-
-# --------------------
-# Module configuration
-# --------------------
-
-#
-# git
-#
-
-# Set a custom prefix for the generated aliases. The default prefix is 'G'.
-#zstyle ':zim:git' aliases-prefix 'g'
-
-#
-# input
-#
-
-# Append `../` to your input for each `.` you type after an initial `..`
-#zstyle ':zim:input' double-dot-expand yes
-
-#
-# termtitle
-#
-
-# Set a custom terminal title format using prompt expansion escape sequences.
-# See http://zsh.sourceforge.net/Doc/Release/Prompt-Expansion.html#Simple-Prompt-Escapes
-# If none is provided, the default '%n@%m: %~' is used.
-#zstyle ':zim:termtitle' format '%1~'
-
 #
 # zsh-autosuggestions
 #
@@ -92,70 +45,47 @@ ZSH_AUTOSUGGEST_MANUAL_REBIND=1
 # See https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/docs/highlighters.md
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
 
-# Customize the main highlighter styles.
-# See https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/docs/highlighters/main.md#how-to-tweak-it
-#typeset -A ZSH_HIGHLIGHT_STYLES
-#ZSH_HIGHLIGHT_STYLES[comment]='fg=242'
+#
+# Znap plugin manager
+#
 
+# Download Znap, if it's not there yet.
+[[ -r ~/.znap/znap.zsh ]] ||
+    git clone --depth 1 -- \
+        https://github.com/marlonrichert/zsh-snap.git ~/.znap
+source ~/.znap/znap.zsh  # Start Znap
+zstyle ':znap:*' repos-dir "$HOME/.znap/repos"
 
-### Added by Zinit's installer
-if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
-    print -P "%F{33} %F{220}Installing %F{33}ZDHARMA-CONTINUUM%F{220} Initiative Plugin Manager (%F{33}zdharma-continuum/zinit%F{220})…%f"
-    command mkdir -p "$HOME/.local/share/zinit" && command chmod g-rwX "$HOME/.local/share/zinit"
-    command git clone https://github.com/zdharma-continuum/zinit "$HOME/.local/share/zinit/zinit.git" && \
-        print -P "%F{33} %F{34}Installation successful.%f%b" || \
-        print -P "%F{160} The clone has failed.%f%b"
+znap eval starship "starship init zsh --print-full-init"
+znap prompt
+
+znap source mafredri/zsh-async
+if command -v fzf &>/dev/null; then
+  znap source Aloxaf/fzf-tab
 fi
 
-source "$HOME/.local/share/zinit/zinit.git/zinit.zsh"
-autoload -Uz _zinit
-(( ${+_comps} )) && _comps[zinit]=_zinit
+znap install zsh-users/zsh-completions \
+             z-shell/zsh-fancy-completions
 
-# Load a few important annexes, without Turbo
-# (this is currently required for annexes)
-zinit light-mode for \
-    zdharma-continuum/zinit-annex-as-monitor \
-    zdharma-continuum/zinit-annex-bin-gem-node \
-    zdharma-continuum/zinit-annex-patch-dl \
-    zdharma-continuum/zinit-annex-rust
+znap source zdharma-continuum/fast-syntax-highlighting
+znap source z-shell/zsh-lsd
 
-# Because your terminal should be able to perform tasks asynchronously without external tools!
-zinit ice pick"async.zsh"
-zinit light mafredri/zsh-async
-# Replace zsh's default completion selection menu with fzf!
-zinit load Aloxaf/fzf-tab
+znap source zsh-users/zsh-history-substring-search
+znap source zsh-users/zsh-autosuggestions
 
-# The plugin configures and delivers completions
-zinit light zsh-users/zsh-completions
-zinit light z-shell/zsh-fancy-completions
+znap source hlissner/zsh-autopair
+znap source MichaelAquilina/zsh-autoswitch-virtualenv
 
-# Plugin history-search-multi-word loaded with investigating.
-zinit load zsh-users/zsh-history-substring-search
-zinit load zdharma-continuum/history-search-multi-word
+znap source ohmyzsh/ohmyzsh plugins/{asdf,command-not-found,direnv,dnf,dotnet,extract,sudo}
 
-# Two regular plugins loaded without investigating.
-zinit light zsh-users/zsh-autosuggestions
-zinit light zdharma-continuum/fast-syntax-highlighting
-
-# Zsh plugin replace GNU/ls with next generation Peltoche/lsd
-zinit load z-shell/zsh-lsd
-
-# Oh-my-zsh plugins
-zinit snippet OMZP::sudo
-zinit snippet OMZP::command-not-found
-
-# Auto-close and delete matching delimiters in zsh
-zinit light hlissner/zsh-autopair
-
-# ZSH plugin to automatically switch python virtualenvs
-# (including pipenv and poetry) as you move between directories
-zinit ice pick"autoswitch_virtualenv.plugin.zsh"
-zinit load MichaelAquilina/zsh-autoswitch-virtualenv
-
-
-# Snippet
-
-### End of Zinit's installer chunk
+znap eval zoxide-cd "zoxide init zsh --cmd cd"
+znap eval thefuck "thefuck --alias"
+znap eval navi "navi widget zsh"
+znap eval fnm "fnm env --use-on-cd"
+znap eval pipx "register-python-argcomplete pipx"
+znap eval atuin "atuin init zsh --disable-up-arrow"
+znap eval deno "deno completions zsh"
+znap eval bun "bun completions"
 
 # ------------------------------
 # Post-init module configuration
@@ -173,7 +103,6 @@ for key ('k') bindkey -M vicmd ${key} history-substring-search-up
 for key ('j') bindkey -M vicmd ${key} history-substring-search-down
 unset key
 
-# ---------------------------------- Plugins ----------------------------------
 #
 # Fzf - A command-line fuzzy finder
 #
@@ -245,7 +174,9 @@ zstyle ':fzf-tab:*' popup-min-size 50 8
 # only apply to 'diff'
 zstyle ':fzf-tab:complete:diff:*' popup-min-size 80 12
 
-# -------------------------------- Environments -------------------------------
+#
+# Environments
+#
 LOCALLIB="$HOME/.local/lib"
 LOCALSHARE="$HOME/.local/share"
 
@@ -299,27 +230,15 @@ export PATH="$HOME/.local/bin:$PATH"
 # Doom emacs
 export PATH="$HOME/.config/emacs/bin:$PATH"
 
-# ----------------------------------- Evals -----------------------------------
-# --------------------------- Eval ----------------------------------
-# Use zoxide to replace cd command
-eval "$(zoxide init zsh --cmd cd)"
-# Enable starship
-if [[ $TERM != "linux" ]]; then
-    eval "$(starship init zsh)"
-fi
-# Thefuch plugin
-eval "$(thefuck --alias)"
-# navi -- An interactive cheatsheet tool for the command-line
-eval "$(navi widget zsh)"
-# fnm -- NodeJS version manager written by Rust
-eval "$(fnm env --use-on-cd)"
-# pipx -- Install and Run Python Applications in Isolated Environments
-eval "$(register-python-argcomplete pipx)"
-# atuin -- Magic shell history
-eval "$(atuin init zsh --disable-up-arrow)"
-# ----------------------------------- Alias -----------------------------------
+#
+# Aliases
+#
 alias code="/usr/bin/code --enable-features=UseOzonePlatform --ozone-platform=wayland --new-window"
-# --------------------------------- Functions ---------------------------------
+
+#
+# Functions
+#
+
 # Enable Transient Prompt
 function zle-line-init {
     emulate -L zsh
