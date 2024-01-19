@@ -220,9 +220,6 @@ zstyle ':fzf-tab:complete:diff:*' popup-min-size 80 12
 LOCALLIB="$HOME/.local/lib"
 LOCALSHARE="$HOME/.local/share"
 
-# Eliminate duplicate entries in history
-setopt HIST_IGNORE_DUPS
-
 export EDITOR="nvim"
 export PAGER="bat"
 export MANPAGER="bat"
@@ -274,7 +271,6 @@ export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.config/emacs/bin:$PATH"
 
 # ----------------------------------- Evals -----------------------------------
-# --------------------------- Eval ----------------------------------
 # Use zoxide to replace cd command
 eval "$(zoxide init zsh --cmd cd)"
 # Enable starship
