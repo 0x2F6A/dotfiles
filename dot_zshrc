@@ -76,6 +76,8 @@ znap source zsh-users/zsh-autosuggestions
 znap source hlissner/zsh-autopair
 znap source MichaelAquilina/zsh-autoswitch-virtualenv
 
+znap source wfxr/forgit
+
 znap source ohmyzsh/ohmyzsh plugins/{asdf,command-not-found,direnv,dnf,dotnet,extract,sudo}
 
 znap eval zoxide-cd "zoxide init zsh --cmd cd"
