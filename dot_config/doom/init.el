@@ -23,10 +23,10 @@
        :completion
        (company
         +childframe)       ; the ultimate code completion backend
-       (helm
-        +childframe
-        +fuzzy
-        +icons)            ; the *other* search engine for love and life
+       ;; (helm
+       ;;  +childframe
+       ;;  +fuzzy
+       ;;  +icons)         ; the *other* search engine for love and life
        ;;ido               ; the other *other* search engine...
        (ivy
         +childframe
@@ -182,7 +182,7 @@
        ;;(ruby +rails)     ; 1.step {|i| p "Ruby is #{i.even? ? 'love' : 'life'}"}
        ;;(rust +lsp)       ; Fe2O3.unwrap().unwrap().unwrap().unwrap()
        ;;scala             ; java, but good
-       ;;(scheme +guile)   ; a fully conniving family of lisps
+       (scheme +chez)      ; a fully conniving family of lisps
        sh                ; she sells {ba,z,fi}sh shells on the C xor
        ;;sml
        ;;solidity          ; do you need a blockchain? No.
