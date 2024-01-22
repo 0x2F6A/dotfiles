@@ -86,8 +86,12 @@ znap eval navi "navi widget zsh"
 znap eval fnm "fnm env --use-on-cd"
 znap eval pipx "register-python-argcomplete pipx"
 znap eval atuin "atuin init zsh --disable-up-arrow"
-znap eval deno "deno completions zsh"
-znap eval bun "bun completions"
+
+# Generated complete functions
+znap fpath _deno   "deno   completions zsh"
+znap fpath _rustup "rustup completions zsh"
+znap fpath _cargo  "rustup completions zsh cargo"
+znap fpath _docker "docker completion zsh"
 
 # ------------------------------
 # Post-init module configuration
