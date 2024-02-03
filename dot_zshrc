@@ -74,13 +74,6 @@ export PATH="$HOME/.cargo/bin:$PATH"
 # NPM -- node package manager
 export npm_config_prefix="$HOME/.local"
 
-# PNPM -- Fast, disk space efficient package manager
-export PNPM_HOME="$LOCALSHARE/pnpm"
-case ":$PATH:" in
-    *":$PNPM_HOME:"*) ;;
-    *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-
 # luarocks -- lua package manager
 export PATH="$HOME/.luarocks/bin:$PATH"
 
