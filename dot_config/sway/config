@@ -51,7 +51,15 @@ default_floating_border normal 2
 gaps inner 5
 
 # Window title
-for_window [shell="xwayland"] title_format "[XWayland] %title"
+for_window {
+  [shell="xwayland"] title_format "[XWayland] %title"
+  [app_id="neovide"] floating enable, resize set 90ppt 90ppt
+  [title="(?:Open|Save) (?:File|Folder|As)"] floating enable, resize set 50ppt 50ppt
+  [window_role="pop-up"] floating enable
+  [window_role="bubble"] floating enable
+  [window_role="dialog"] floating enable
+  [window_type="dialog"] floating enable
+}
 
 ### Output configuration
 #
@@ -89,8 +97,8 @@ exec swayidle -w \
 exec dbus-update-activation-environment --all
 exec /usr/libexec/polkit-gnome-authentication-agent-1
 exec /usr/bin/gnome-keyring-daemon --start --components=secrets
-exec swww-daemon
 exec swww init
+exec swww img ~/Pictures/traffic.png
 exec mako
 exec udiskie
 exec nm-applet --indicator
