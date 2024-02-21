@@ -18,7 +18,7 @@ set $term alacritty
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
-set $menu wofi
+set $menu onagre
 
 set $file_manager nautilus
 set $locker swaylock
@@ -104,6 +104,7 @@ exec udiskie
 exec nm-applet --indicator
 
 exec_always fcitx5 --replace -d
+exec_always autotiling -w 1 3 5 7 9
 exec_always wl-clipboard-history -t
 exec_always wl-paste --type text --watch cliphist store
 exec_always wl-paste --type image --watch cliphist store
