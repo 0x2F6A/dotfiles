@@ -152,6 +152,7 @@ znap fpath _deno   "deno   completions zsh"
 znap fpath _rustup "rustup completions zsh"
 znap fpath _cargo  "rustup completions zsh cargo"
 znap fpath _docker "docker completion zsh"
+znap fpath _ng     "ng completion script"
 
 # ------------------------------
 # Post-init module configuration
