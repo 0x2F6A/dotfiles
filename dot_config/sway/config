@@ -99,7 +99,7 @@ exec dbus-update-activation-environment --all
 exec /usr/libexec/polkit-gnome-authentication-agent-1
 exec /usr/bin/gnome-keyring-daemon --start --components=secrets
 exec swww init
-exec swww img ~/Pictures/traffic.png
+exec swww img ~/Pictures/nordfox.jpg
 exec mako
 exec udiskie
 exec nm-applet --indicator
@@ -160,7 +160,8 @@ input "type:keyboard" {
     bindsym $mod+Shift+c reload
 
     # Exit sway (logs you out of your Wayland session)
-    bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+    # bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+    bindsym $mod+Shift+e exec wlogout -b 6
 #
 # Moving around:
 #
