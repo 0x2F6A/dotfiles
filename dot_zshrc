@@ -80,9 +80,6 @@ export PATH="$HOME/.luarocks/bin:$PATH"
 # Composer -- PHP package manager
 export PATH="$HOME/.composer/vendor/bin:$PATH"
 
-# Coursier -- Scala toolchain
-export PATH="$HOME/.local/share/coursier/bin:$PATH"
-
 # Gem -- Ruby package manager
 export GEM_HOME="$(gem env user_gemhome)"
 export PATH="$GEM_HOME/bin:$PATH"
@@ -149,6 +146,7 @@ znap eval navi "navi widget zsh"
 znap eval fnm "fnm env --use-on-cd"
 znap eval pipx "register-python-argcomplete pipx"
 znap eval atuin "atuin init zsh --disable-up-arrow"
+znap eval coursier "cs install --env"
 
 # Generated complete functions
 znap fpath _deno   "deno   completions zsh"
