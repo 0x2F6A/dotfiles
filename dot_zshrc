@@ -80,6 +80,9 @@ export PATH="$HOME/.luarocks/bin:$PATH"
 # Composer -- PHP package manager
 export PATH="$HOME/.composer/vendor/bin:$PATH"
 
+# Coursier -- Scala toolchain
+export PATH="$HOME/.local/share/coursier/bin:$PATH"
+
 # Gem -- Ruby package manager
 export GEM_HOME="$(gem env user_gemhome)"
 export PATH="$GEM_HOME/bin:$PATH"
