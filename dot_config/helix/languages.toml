@@ -4,50 +4,22 @@ phpactor = { command = "phpactor" }
 v-analyzer = { command = "v-analyzer", args = [""] }
 neocmakelsp = { command = "neocmakelsp", args = ["--stdio"] }
 pylylzer = { command = "pylyzer", args = ["--server"] }
+csharp-ls = { command = "csharp-ls" }
 
 [[language]]
 name = "cmake"
 auto-format = true
 language-servers = [{ name = "neocmakelsp" }]
 
-
 [[language]]
-name = "python"
-scope = "source.python"
-injection-regex = "python"
-file-types = [
-  "py",
-  "pyi",
-  "py3",
-  "pyw",
-  "ptl",
-  ".pythonstartup",
-  ".pythonrc",
-  "SConstruct",
-  "rpy",
-  "cpy",
-  "ipy",
-  "pyt",
-  "SConscript",
-]
-shebangs = ["python"]
-roots = ["pyproject.toml", "setup.py", "poetry.lock", "pyrightconfig.json"]
-comment-token = "#"
-language-servers = ["pylylzer"]
-# TODO: pyls needs utf-8 offsets
-indent = { tab-width = 4, unit = "    " }
-
-[language.debugger]
-name = "debugpy"
-transport = "stdio"
-command = "python"
-args = ["-m",  "debugpy.adapter"]
-
-[[language.debugger.templates]]
-name = "source"
-request = "launch"
-completion = [ { name = "entrypoint", completion = "filename", default = "." } ]
-args = { mode = "debug", program = "{0}" }
+name = "c-sharp"
+scope = "source.csharp"
+injection-regex = "c-?sharp"
+file-types = ["cs", "csx", "cake"]
+roots = ["sln", "csproj"]
+comment-token = "//"
+indent = { tab-width = 4, unit = "\t" }
+language-servers = [ "csharp-ls" ]
 
 [[language]]
 name = "php"
@@ -132,17 +104,3 @@ file-types = [
 language-servers = [ "vscode-json-language-server" ]
 auto-format = true
 indent = { tab-width = 2, unit = "  " }
-
-[[grammar]]
-name = "json"
-source = { git = "https://github.com/tree-sitter/tree-sitter-json", rev = "3fef30de8aee74600f25ec2e319b62a1a870d51e" }
-
-
-[[language]]
-name = "gemini"
-scope = "source.gmi"
-file-types = ["gmi"]
-
-[[grammar]]
-name = "gemini"
-source = { git = "https://github.com/blessanabraham/tree-sitter-gemini", rev = "3cc5e4bdf572d5df4277fc2e54d6299bd59a54b3" }
