@@ -84,6 +84,9 @@ export PATH="$HOME/.composer/vendor/bin:$PATH"
 export GEM_HOME="$(gem env user_gemhome)"
 export PATH="$GEM_HOME/bin:$PATH"
 
+# dotnet
+export PATH="$HOME/.dotnet/tools:$PATH"
+
 # bun completions
 [ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
 
@@ -97,6 +100,10 @@ export PATH="$HOME/.deno/bin:$PATH"
 # Wasmer
 export WASMER_DIR="$HOME/.wasmer"
 [ -s "$WASMER_DIR/wasmer.sh" ] && source "$WASMER_DIR/wasmer.sh"
+
+# sdkman
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 
 # Binary files path
 export PATH="$HOME/.local/bin:$PATH"
