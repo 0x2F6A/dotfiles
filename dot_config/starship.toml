@@ -26,7 +26,6 @@ format = """$os\
         $cmake\
         $crystal\
         $dart\
-        $deno\
         $dotnet\
         $elixir\
         $erlang\
@@ -39,6 +38,8 @@ format = """$os\
         $nim\
         $haxe\
         $nodejs\
+        $bun\
+        $deno\
         $ocaml\
         $perl\
         $php\
