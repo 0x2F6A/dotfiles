@@ -1,0 +1,42 @@
+[user]
+	name = MysticalDevil
+	email = jinpeng7981@outlook.com
+[init]
+	defaultBranch = main
+
+[core]
+  pager = delta
+	excludesFile = ~/.gitignore
+
+[interactive]
+  diffFilter = delta --color-only
+
+[delta]
+  navigate = true    # use n and N to move between diff sections
+  light = false      # set to true if you're in a terminal w/ a light background color (e.g. the default macOS terminal)
+  line-numbers = true
+
+[merge]
+  conflictstyle = diff3
+
+[diff]
+  colorMoved = default
+
+[http]
+  postBuffer = 524288000
+  lowSpeedLimit = 30
+  lowSpeedTime = 15
+
+[maintenance]
+	repo = /home/theta/.znap/repos/Aloxaf/fzf-tab
+	repo = /home/theta/.znap/repos/mafredri/zsh-async
+	repo = /home/theta/.znap/repos/zdharma-continuum/fast-syntax-highlighting
+	repo = /home/theta/.znap/repos/z-shell/zsh-fancy-completions
+	repo = /home/theta/.znap/repos/z-shell/zsh-lsd
+	repo = /home/theta/.znap/repos/zsh-users/zsh-autosuggestions
+	repo = /home/theta/.znap/repos/zsh-users/zsh-completions
+	repo = /home/theta/.znap/repos/zsh-users/zsh-history-substring-search
+	repo = /home/theta/.znap/repos/hlissner/zsh-autopair
+	repo = /home/theta/.znap/repos/MichaelAquilina/zsh-autoswitch-virtualenv
+	repo = /home/theta/.znap/repos/ohmyzsh/ohmyzsh
+	repo = /home/theta/.znap/repos/wfxr/forgit
