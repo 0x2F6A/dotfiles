@@ -2,6 +2,19 @@
 # Zsh configuration
 # -----------------
 
+
+#
+# Znap plugin manager
+#
+
+# Download Znap, if it's not there yet.
+[[ -r ~/.znap/znap.zsh ]] ||
+    git clone --depth 1 -- \
+        https://github.com/marlonrichert/zsh-snap.git ~/.znap
+source ~/.znap/znap.zsh  # Start Znap
+zstyle ':znap:*' repos-dir "$HOME/.znap/repos"
+
+
 #
 # History
 #
@@ -24,26 +37,6 @@ bindkey -v
 
 # Remove path separator from WORDCHARS.
 WORDCHARS=${WORDCHARS//[\/]}
-
-#
-# zsh-autosuggestions
-#
-
-# Disable automatic widget re-binding on each precmd. This can be set when
-# zsh-users/zsh-autosuggestions is the last module in your ~/.zimrc.
-ZSH_AUTOSUGGEST_MANUAL_REBIND=1
-
-# Customize the style that the suggestions are shown with.
-# See https://github.com/zsh-users/zsh-autosuggestions/blob/master/README.md#suggestion-highlight-style
-#ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=242'
-
-#
-# zsh-syntax-highlighting
-#
-
-# Set what highlighters will be used.
-# See https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/docs/highlighters.md
-ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
 
 #
 # Environments
@@ -111,17 +104,9 @@ export PATH="$HOME/.local/bin:$PATH"
 # Doom emacs
 export PATH="$HOME/.config/emacs/bin:$PATH"
 
-
 #
-# Znap plugin manager
+# Plugin manage
 #
-
-# Download Znap, if it's not there yet.
-[[ -r ~/.znap/znap.zsh ]] ||
-    git clone --depth 1 -- \
-        https://github.com/marlonrichert/zsh-snap.git ~/.znap
-source ~/.znap/znap.zsh  # Start Znap
-zstyle ':znap:*' repos-dir "$HOME/.znap/repos"
 
 znap eval starship "starship init zsh --print-full-init"
 znap prompt
@@ -162,9 +147,13 @@ znap fpath _cargo  "rustup completions zsh cargo"
 znap fpath _docker "docker completion zsh"
 znap fpath _ng     "ng completion script"
 
-# ------------------------------
-# Post-init module configuration
-# ------------------------------
+#
+# zsh-autosuggestions
+#
+
+# Disable automatic widget re-binding on each precmd. This can be set when
+# zsh-users/zsh-autosuggestions is the last module in your ~/.zimrc.
+ZSH_AUTOSUGGEST_MANUAL_REBIND=1
 
 #
 # zsh-history-substring-search
@@ -177,6 +166,25 @@ for key ('^[[B' '^N' ${terminfo[kcud1]}) bindkey ${key} history-substring-search
 for key ('k') bindkey -M vicmd ${key} history-substring-search-up
 for key ('j') bindkey -M vicmd ${key} history-substring-search-down
 unset key
+
+
+# Customize the style that the suggestions are shown with.
+# See https://github.com/zsh-users/zsh-autosuggestions/blob/master/README.md#suggestion-highlight-style
+#ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=242'
+
+#
+# zsh-syntax-highlighting
+#
+
+# Set what highlighters will be used.
+# See https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/docs/highlighters.md
+ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
+
+
+
+# ------------------------------
+# Post-init module configuration
+# ------------------------------
 
 #
 # Fzf - A command-line fuzzy finder
