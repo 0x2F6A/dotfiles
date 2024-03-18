@@ -411,7 +411,8 @@
       "^(.*) \\[(.*Spotify.*)\\]$": "  $1",
       "^(.*) \\[jetbrains-studio\\]": "󰀲 $1",
       "^(.*) VLC media player \\[vlc\\]$": "󰕼  $1",
-      "VLC media player \\[vlc\\]$": "󰕼  $1"
+      "VLC media player \\[vlc\\]$": "󰕼  $1",
+      "\\[\\]": ""
     },
     "max-length": 50
   },
@@ -441,7 +442,7 @@
   "custom/quit": {
     "format": "󰗼",
     "tooltip": false,
-    "on-click": "swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'"
+    "on-click": "hyprctl dispatch exit"
   },
   "custom/lock": {
     "format": "󰍁",

@@ -4,7 +4,7 @@
 
 
 #
-# Znap plugin manager
+# Plugin manager
 #
 
 # Download Znap, if it's not there yet.
@@ -13,6 +13,7 @@
         https://github.com/marlonrichert/zsh-snap.git ~/.znap
 source ~/.znap/znap.zsh  # Start Znap
 zstyle ':znap:*' repos-dir "$HOME/.znap/repos"
+zstyle ':znap:*' auto-compile on
 
 
 #
@@ -138,7 +139,11 @@ znap eval navi "navi widget zsh"
 znap eval fnm "fnm env --use-on-cd"
 znap eval pipx "register-python-argcomplete pipx"
 znap eval atuin "atuin init zsh --disable-up-arrow"
-znap eval coursier "cs install --env"
+if command -v cs; then
+  znap eval coursier "cs install --env"
+else
+  znap eval coursier "coursier install --env"
+fi
 
 # Generated complete functions
 znap fpath _deno   "deno   completions zsh"
