@@ -25,6 +25,8 @@ window#waybar {
   border-radius: 0;
   transition-duration: 0.5s;
   margin: 0 0;
+  padding: 2px;
+  border-radius: 8px;
 }
 
 window#waybar.hidden {
