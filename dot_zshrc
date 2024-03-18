@@ -118,7 +118,8 @@ if command -v fzf &>/dev/null; then
 fi
 
 znap install zsh-users/zsh-completions \
-             z-shell/zsh-fancy-completions
+             z-shell/zsh-fancy-completions \
+             asdf-vm/asdf
 
 znap source zdharma-continuum/fast-syntax-highlighting
 znap source z-shell/zsh-lsd
@@ -131,14 +132,14 @@ znap source MichaelAquilina/zsh-autoswitch-virtualenv
 
 znap source wfxr/forgit
 
-znap source ohmyzsh/ohmyzsh plugins/{asdf,command-not-found,direnv,dnf,dotnet,extract,sudo}
+znap source ohmyzsh/ohmyzsh plugins/{asdf,command-not-found,direnv,dotnet,extract,sudo}
 
-znap eval zoxide-cd "zoxide init zsh --cmd cd"
+# znap eval zoxide-cd "zoxide init zsh --cmd cd"
 znap eval thefuck "thefuck --alias"
 znap eval navi "navi widget zsh"
 znap eval fnm "fnm env --use-on-cd"
 znap eval pipx "register-python-argcomplete pipx"
-znap eval atuin "atuin init zsh --disable-up-arrow"
+znap eval atuin "atuin init zsh"
 if command -v cs; then
   znap eval coursier "cs install --env"
 else
@@ -151,41 +152,6 @@ znap fpath _rustup "rustup completions zsh"
 znap fpath _cargo  "rustup completions zsh cargo"
 znap fpath _docker "docker completion zsh"
 znap fpath _ng     "ng completion script"
-
-#
-# zsh-autosuggestions
-#
-
-# Disable automatic widget re-binding on each precmd. This can be set when
-# zsh-users/zsh-autosuggestions is the last module in your ~/.zimrc.
-ZSH_AUTOSUGGEST_MANUAL_REBIND=1
-
-#
-# zsh-history-substring-search
-#
-
-zmodload -F zsh/terminfo +p:terminfo
-# Bind ^[[A/^[[B manually so up/down works both before and after zle-line-init
-for key ('^[[A' '^P' ${terminfo[kcuu1]}) bindkey ${key} history-substring-search-up
-for key ('^[[B' '^N' ${terminfo[kcud1]}) bindkey ${key} history-substring-search-down
-for key ('k') bindkey -M vicmd ${key} history-substring-search-up
-for key ('j') bindkey -M vicmd ${key} history-substring-search-down
-unset key
-
-
-# Customize the style that the suggestions are shown with.
-# See https://github.com/zsh-users/zsh-autosuggestions/blob/master/README.md#suggestion-highlight-style
-#ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=242'
-
-#
-# zsh-syntax-highlighting
-#
-
-# Set what highlighters will be used.
-# See https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/docs/highlighters.md
-ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
-
-
 
 # ------------------------------
 # Post-init module configuration
