@@ -8,11 +8,9 @@
     "custom/launcher",
     "group/group-hardware",
     "keyboard-state",
-    "sway/workspaces",
     "hyprland/workspaces"
   ],
   "modules-center": [
-    "sway/window",
     "hyprland/window"
   ],
   "modules-right": [
@@ -341,7 +339,10 @@
       "focused": "",
       "default": ""
     },
-    "high-priority-named": ["1", "2"]
+    "high-priority-named": [
+      "1",
+      "2"
+    ]
   },
   "sway/window": {
     "format": "{title} [{app_id}]",
@@ -362,8 +363,7 @@
       "^(.*) \\[(.*Spotify.*)\\]$": "  $1",
       "^(.*) \\[jetbrains-studio\\]": "󰀲 $1",
       "^(.*) VLC media player \\[vlc\\]$": "󰕼  $1",
-      "VLC media player \\[vlc\\]$": "󰕼  $1",
-      "\\[\\]": ""
+      "VLC media player \\[vlc\\]$": "󰕼  $1"
     },
     "max-length": 50
   },
@@ -412,7 +412,7 @@
       "^(.*) \\[jetbrains-studio\\]": "󰀲 $1",
       "^(.*) VLC media player \\[vlc\\]$": "󰕼  $1",
       "VLC media player \\[vlc\\]$": "󰕼  $1",
-      "\\[\\]": ""
+      " \\[\\]": ""
     },
     "max-length": 50
   },
@@ -460,4 +460,3 @@
     "on-click": "~/.config/waybar/scripts/confirm-dialog.sh shutdown"
   }
 }
-

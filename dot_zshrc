@@ -134,12 +134,12 @@ znap source wfxr/forgit
 
 znap source ohmyzsh/ohmyzsh plugins/{asdf,command-not-found,direnv,dotnet,extract,sudo}
 
-# znap eval zoxide-cd "zoxide init zsh --cmd cd"
+znap eval zoxide-cd "zoxide init zsh --cmd cd"
 znap eval thefuck "thefuck --alias"
 znap eval navi "navi widget zsh"
 znap eval fnm "fnm env --use-on-cd"
 znap eval pipx "register-python-argcomplete pipx"
-znap eval atuin "atuin init zsh"
+znap eval atuin "atuin init zsh --disable-up-arrow"
 if command -v cs; then
   znap eval coursier "cs install --env"
 else
@@ -233,6 +233,8 @@ zstyle ':fzf-tab:complete:diff:*' popup-min-size 80 12
 # Aliases
 #
 alias code="/usr/bin/code --enable-features=UseOzonePlatform --ozone-platform=wayland --new-window"
+alias hx=helix
+alias cs=coursier
 
 #
 # Functions
