@@ -232,7 +232,7 @@ zstyle ':fzf-tab:complete:diff:*' popup-min-size 80 12
 #
 # Aliases
 #
-alias code="/usr/bin/code --enable-features=UseOzonePlatform --ozone-platform=wayland --new-window"
+alias code="/usr/bin/code --enable-features=UseOzonePlatform --ozone-platform=wayland --enable-wayland-ime --new-window"
 alias hx=helix
 alias cs=coursier
 
