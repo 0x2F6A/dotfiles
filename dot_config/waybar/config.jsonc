@@ -447,7 +447,7 @@
   "custom/lock": {
     "format": "󰍁",
     "tooltip": false,
-    "on-click": "swaylock"
+    "on-click": "hyprlock"
   },
   "custom/reboot": {
     "format": "󰜉",
@@ -460,3 +460,4 @@
     "on-click": "~/.config/waybar/scripts/confirm-dialog.sh shutdown"
   }
 }
+
