@@ -269,3 +269,15 @@ function zle-line-init {
     return ret
 }
 zle -N zle-line-init
+
+# Set system proxy
+function proxy_on {
+  export http_proxy=http://127.0.0.1:7897
+  export https_proxy=$http_proxy
+  echo -e "Terminal proxy is enabled"
+}
+
+function proxy_off {
+  unset http_proxy https_proxy
+  echo -e "Terminal proxy is disabled"
+}

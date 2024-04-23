@@ -1,1 +1,1 @@
-gem: --user-install --bindir /home/theta/.local/share/gem/ruby/bin
+gem: --user-install --bindir /home/theta/.local/share/gem/ruby/3.0.0/bin
